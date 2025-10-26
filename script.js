@@ -17,6 +17,9 @@ async function fetchSurahsList() {
             surahSelect.appendChild(option);
         });
         
+        // **الإصلاح هنا: تحديد القيمة الافتراضية قبل الجلب**
+        surahSelect.value = 1; 
+        
         // جلب سورة الفاتحة افتراضياً (الرقم 1)
         fetchSurah(1); 
 
@@ -65,7 +68,7 @@ async function fetchSurah(surahNumber) {
 // 3. تشغيل التلاوة
 function playRecitation() {
     const selectedSurahNumber = surahSelect.value;
-    if (!selectedSurahNumber) {
+    if (!selectedSurahNumber || selectedSurahNumber === "") {
         alert('يرجى اختيار سورة أولاً.');
         return;
     }
